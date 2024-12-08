@@ -4,8 +4,12 @@ import SignInClient from "@/components/auth/signin-button-client";
 import SignInServer from "@/components/auth/signin-button-server";
 import SignOutClient from "@/components/auth/signout-button-client";
 import SignOutServer from "@/components/auth/signout-button-server";
+import { auth } from "@/auth";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+  console.log(session);
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -51,6 +55,13 @@ export default function Home() {
         </div>
         <SignInClient />
         <SignInServer />
+        {session && (
+          <ul>
+            <li>email: {session.user?.email}</li>
+            <li>id: {session.user?.id}</li>
+            <li>name: {session.user?.name}</li>
+          </ul>
+        )}
         <SignOutClient />
         <SignOutServer />
       </main>
