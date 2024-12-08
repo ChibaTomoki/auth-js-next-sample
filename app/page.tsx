@@ -1,5 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import SignInClient from "@/components/auth/signin-button-client";
+import SignInServer from "@/components/auth/signin-button-server";
+import SignOutClient from "@/components/auth/signout-button-client";
+import SignOutServer from "@/components/auth/signout-button-server";
 
 export default function Home() {
   return (
@@ -45,6 +49,10 @@ export default function Home() {
             Read our docs
           </a>
         </div>
+        <SignInClient />
+        <SignInServer />
+        <SignOutClient />
+        <SignOutServer />
       </main>
       <footer className={styles.footer}>
         <a
